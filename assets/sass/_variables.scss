@@ -1,0 +1,43 @@
+//Variables:
+
+/*---------------SCSS for colors---------------*/
+$red: #e2534b;
+$lightRed: #e8645a;
+$green: #76c7c0;
+$gray: #7f8c8c;
+$darkGray: #777;
+$black: #222;
+$lightBlack:#333;
+$white: #fff;
+$darkWhite: #f3f3f3;
+
+
+
+$primaryColor: $green;
+$secondaryColor: $lightRed;
+$logoColor: $white;
+$textColor: $darkGray;
+$titleColor: $gray;
+$menuColor: $white;
+$btnColor: $green;
+$bthHoverColor: $secondaryColor;
+ //
+ $body-font: 'Raleway', 'HelveticaNeue', 'Helvetica', 'Arial', 'Verdana', sans-serif;
+ $icon-font: 'eo-icon';
+ $primary-color: #006EC3;
+ $primary-color-rgb: rgb(0, 110, 195);
+ $secondary-color: #DDDDDD;
+ $dark-grey: #333333;
+ $grey: #898989;
+ $light-grey: #F5F6F8;
+ $site-main-width: 80%;
+
+/*---------------SCSS for font--------------*/
+$font-family-base: 'Quicksand', sans-serif;
+$font-size-base: 1rem;
+$line-height-base: 1.7;
+$normal: 400;
+$medium: 500;
+$heavy: 700;
+/*---------------SCSS for guttter---------------*/
+$gutter: 2%;

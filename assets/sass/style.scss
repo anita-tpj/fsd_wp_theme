@@ -1,0 +1,407 @@
+/*!
+Theme Name: FSD Theme
+Author: Anita Tapaji
+Author URI: http://tanita.webege.com/
+Description: This is the FSD WordPress Theme
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: fsd
+Tags: custom-background, custom-logo, custom-menu, featured-images, custom Front page template
+
+This theme, like WordPress, is licensed under the GPL.
+*/
+
+@import 'variables';
+@import 'mixins';
+@import 'nav';
+
+
+/*---------- Global ----------*/
+body {
+  background-color: $darkWhite;
+  color: $textColor;
+  user-select: none;
+}
+
+.wrapper {
+  padding: 0;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (min-width: 1280px) {
+  .wrapper {
+    padding: 0 10%;
+  }
+}
+
+a {
+  color: #fff!important;
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+.close {
+  display: none;
+}
+
+.open {
+  display: block!important;
+}
+/*---------- Header ----------*/
+header.site-header {
+  background: url("images/header_bg.jpg") no-repeat;
+  background-position: center bottom;
+  background-repeat: repeat-x;
+  height: 80px;
+  display: flex;
+  background-color: $primaryColor;
+
+
+  &.header-affix {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: auto;
+    border-bottom: 0;
+    z-index: 1000;
+  }
+
+  @media (min-width: 992px) and (max-width:1280px) {
+    height: 113px;
+    align-items: flex-start;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media (max-width: 920px) {
+      justify-content: flex-start;
+    }
+
+    @media (min-width: 992px) and (max-width:1280px) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .menu-brand {
+      margin-right: auto;
+
+      @media (min-width: 992px) and (max-width:1280px) {
+        flex: 1 1 100%;
+        text-align: center;
+        margin: 1rem 0 .5rem;
+      }
+    }
+    .menu-burger {
+      margin-right: 0.2rem;
+      width: 49px;
+      height: 45px;
+      position: relative;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+      @include transition(all 0.5s ease);
+      cursor: pointer;
+
+      &:hover {
+        span {
+          background: $secondaryColor;
+        }
+      }
+
+      span {
+        display: block;
+        position: absolute;
+        height: 9px;
+        width: 100%;
+        background: $red;
+        border-radius: 9px;
+        opacity: 1;
+        left: 0;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        @include transition(all 0.25s ease);
+      }
+
+      span:nth-child(1) {
+        top: 0px;
+        -webkit-transform-origin: left center;
+        -moz-transform-origin: left center;
+        -o-transform-origin: left center;
+        transform-origin: left center;
+      }
+
+      span:nth-child(2) {
+        top: 18px;
+        -webkit-transform-origin: left center;
+        -moz-transform-origin: left center;
+        -o-transform-origin: left center;
+        transform-origin: left center;
+      }
+
+      span:nth-child(3) {
+        top: 36px;
+        -webkit-transform-origin: left center;
+        -moz-transform-origin: left center;
+        -o-transform-origin: left center;
+        transform-origin: left center;
+      }
+
+      &.open span:nth-child(1) {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        top: 4.9px;
+        left: 8px;
+      }
+
+      &.open span:nth-child(2) {
+        width: 0%;
+        opacity: 0;
+      }
+
+      &.open span:nth-child(3) {
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        top: 39px;
+        left: 8px;
+      }
+
+      @media (min-width: 992px) {
+        display: none;
+      }
+    }
+
+    form {
+      white-space: nowrap;
+      &.form-inline{
+        flex-flow: row nowrap;
+
+        @media (min-width: 992px) and (max-width:1280px) {
+          margin-top: -2.4rem!important;
+        }
+      }
+
+      .search-btn img {
+        cursor: pointer;
+      }
+      input.form-control {
+
+        @media (min-width: 992px) {
+          display: none!important;
+        }
+
+        transform: scale(0);
+        //transition: transform .4s cubic-bezier(.5,0,.3,1);
+        @include transition(transform .4s cubic-bezier(.5,0,.3,1));
+
+        &.open {
+          @media (min-width: 992px) {
+            display: inline!important;
+          }
+          transform: scale(1);
+          //transition: transform .4s cubic-bezier(.5,0,.3,1);
+          @include transition(transform .4s cubic-bezier(.5,0,.3,1));
+        }
+      }
+    }
+  }
+}
+
+//Section Slider
+
+.carousel-caption {
+  bottom: 25%;
+  display: flex;
+  flex-direction: column;
+
+  h5, p {
+    color: $white;
+    padding: 0 1.5rem;
+    margin: 1rem auto;
+  }
+  h5 {
+    text-transform:uppercase;
+    font-size: 3rem;
+    font-weight: bold;
+    background-color: $red;
+    border-radius: .3rem;
+    padding: 0 1.5rem;
+    max-width: 600px;
+  }
+
+  p {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: .5rem;
+    padding: .5rem 1.5rem;
+    max-width: 450px;
+  }
+}
+
+.carousel-indicators li {
+  background-color: rgba(0,0,0,.3);
+
+  &.active,
+  &.current-menu-item {
+    background-color: $red;
+  }
+}
+
+.carousel-indicators {
+  bottom: -35px;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  opacity: 1;
+  width: auto;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+//  width: 3%;
+padding:1.5rem;
+background: $secondaryColor no-repeat center center;
+top: -15%;
+}
+
+.carousel-control-next-icon {
+  background-image: url("images/arrow-next.png");
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("images/arrow-prev.png");
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+
+/*---------- Main Content ----------*/
+
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.services-item {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem 0;
+  min-width: 15rem;
+  @include transition(all 0.5s ease);
+
+
+  @media (min-width: 576px) {
+    padding: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    flex: 1 1 50%;
+  }
+
+  @media (min-width: 1280px) {
+    flex: 1 1 25%;
+  }
+
+  .services-icon {
+    background-color: $white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 5rem;
+    border-radius: .5rem .5rem 0 0;
+
+
+    .fa-thumbs-up:before,
+    .fa-key:before,
+    .fa-font-awesome-flag:before,
+    .fa-flask:before {
+      color: $primaryColor;
+      @include transition(all 0.5s ease);
+    }
+  }
+
+  .services-body {
+    background-color: $white;
+    padding: 1.5rem 1.5rem 4rem;
+    width: 100%;
+    border-radius: 0 0 .5rem .5rem;
+    box-shadow: 0 4px darken($white, 10%);
+    min-height: 17rem;
+
+    h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      color: $titleColor;
+      font-weight: bold;
+      padding-bottom: 1.5rem;
+    }
+
+    p {
+      font-size: .8rem;
+    }
+  }
+
+  &:hover {
+    .fa-thumbs-up:before,
+    .fa-key:before,
+    .fa-font-awesome-flag:before,
+    .fa-flask:before{
+      color: $secondaryColor;
+      @include transition(all 0.5s ease);
+    }
+
+    .services-btn {
+      background-color: $secondaryColor;
+      box-shadow: 0 4px darken($secondaryColor, 20%);
+      cursor: pointer;
+    }
+  }
+
+
+  .services-btn {
+    border: none;
+    color: $white;
+    background-color: $primaryColor;
+    box-shadow: 0 5px darken($primaryColor, 20%);
+    padding: 1.25rem 3.75rem;
+    font-size: .875rem;
+    text-transform: lowercase;
+    margin-top: -2rem;
+    border-radius: .5rem;
+    @include transition(all 0.5s ease);
+
+    &:active {
+      background-color: darken($secondaryColor, 5%);
+      box-shadow: 0 3px darken($secondaryColor, 25%);
+      transform: translateY(2px);
+    }
+  }
+
+  button:focus {
+    outline: none!important;
+  }
+}
+
+/*---------- Footer ----------*/
